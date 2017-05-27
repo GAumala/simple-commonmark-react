@@ -14,8 +14,9 @@ const insertNewElementToResult = (result: ReactElement<any>[], stack: ContainerS
     const currentContainer = stack.peekCurrentContainer()
       if (currentContainer && newElement !== null)
         currentContainer.props.children.push(newElement)
-      else if (isValidReactElement(newElement))
+      else if (isValidReactElement(newElement)) {
         result.push(newElement)
+      }
   }
 
 const updateContainerStack = (containerStack: ContainerStack, node: Commonmark.Node,
@@ -34,9 +35,10 @@ const renderNodes = (nodesBlock: Commonmark.Node, customProps: object):
 
   while (event = walker.next()) {
     const currentNode = event.node
+    const key = "" + result.length
     if (event.entering) {
       const renderer = RendererSelector(currentNode)
-      const currentReactElement = renderer.renderNode(customProps)
+      const currentReactElement = renderer.renderNode(customProps, key)
       insertNewElementToResult(result, containerStack, currentReactElement)
       updateContainerStack(containerStack, currentNode, currentReactElement)
     } else {
