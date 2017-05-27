@@ -18,7 +18,7 @@ var ItalicsRenderer = (function (_super) {
         return _super.call(this, node) || this;
     }
     ItalicsRenderer.prototype.renderNodeWithProps = function (props) {
-        return react_1.createElement('emph', props, []);
+        return react_1.createElement('em', props, []);
     };
     return ItalicsRenderer;
 }(CommonMarkRenderer_1["default"]));

@@ -14,6 +14,9 @@ This is still a work in progress and very limited. Currently the only supported 
 - softbreak
 - strong
 
+If you need a more production ready markdown module, try [commonmark-react-renderer](https://github.com/rexxars/commonmark-react-renderer).
+I started this project because I needed an easier way to style the markdown components.
+
 ## Install
 
 ```
@@ -24,10 +27,7 @@ yarn add simple-commonmark-react
 
 ```javascript
 import React from 'react'
-import CommonMark from 'commonmark'
 import CommonMarkReact from 'simple-commonmark-react'
-
-const parser = new CommonMark.Parser()
 
 class MarkdownComponent extends React.Component {
   render() {
@@ -35,10 +35,9 @@ class MarkdownComponent extends React.Component {
     // props for every markdown element
     // we set className so that we can style each element with CSS
     const markdownProps = { className: 'markdown' }
-    const ast = parser.parse(source)
     return (
       <div>
-        { CommonMarkReact.renderNodes(ast, markdownProps) }  
+        { CommonMarkReact.renderNodes(source, markdownProps) }  
       </div>
     )
   }  

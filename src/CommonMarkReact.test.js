@@ -17,7 +17,7 @@ test('Renders markdown tags: header and paragraph with custom class names', () =
 
 test('Renders inline markdown tags: bold, code and emph with custom class names', () => {
   const markdown = 'Hello World!\n*this* is italics, **this** is bold and `this` is code'
-  const expectedHtml = '<div><p class="markdown">Hello World!<br/><emph class="markdown">this</emph> is italics, <strong class="markdown">this</strong> is bold and <code class="markdown">this</code> is code</p></div>'
+  const expectedHtml = '<div><p class="markdown">Hello World!<br/><em class="markdown">this</em> is italics, <strong class="markdown">this</strong> is bold and <code class="markdown">this</code> is code</p></div>'
   const renderedString = renderToString(markdown)
   expect(renderedString).toEqual(expectedHtml)
 })
@@ -33,5 +33,15 @@ test('Renders code_block without language name with custom class names', () => {
   const markdown = '# Code Test\n\n Check this code\n\n```\nSome pseudo code\n```'
   const renderedString = renderToString(markdown)
   const expectedHtml = '<div><h1 class="markdown">Code Test</h1><p class="markdown">Check this code</p><pre class="markdown"><code class="markdown">Some pseudo code\n</code></pre></div>'
+  expect(renderedString).toEqual(expectedHtml)
+})
+
+
+test('Renders correctly when customProps is undefined', () => {
+  const markdown = '# Code Test\n\n Check this code\n\n```c\n\n#include <stdio.h>\n```'
+  const nodes = CommonMarkReact(markdown)
+  const rootElement = React.createElement('div', null, nodes)
+  const renderedString =  ReactDOMServer.renderToStaticMarkup(rootElement)
+  const expectedHtml = '<div><h1>Code Test</h1><p>Check this code</p><pre class="language-c "><code>\n#include &lt;stdio.h&gt;\n</code></pre></div>'
   expect(renderedString).toEqual(expectedHtml)
 })

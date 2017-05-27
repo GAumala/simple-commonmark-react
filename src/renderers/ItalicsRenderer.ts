@@ -9,6 +9,6 @@ export default class ItalicsRenderer extends CommonMarkRenderer {
   }
 
   renderNodeWithProps(props: object): ReactElement<any> {
-    return createElement('emph', props, [])
+    return createElement('em', props, [])
   }
 }
