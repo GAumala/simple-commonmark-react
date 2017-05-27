@@ -1,13 +1,10 @@
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
-const Commonmark = require('commonmark')
 
-const parser = new Commonmark.Parser()
-const SimpleCommonMarkReact = require('./index.js').default
+const CommonMarkReact = require('./CommonMarkReact.js').default
 
 const renderToString = (markdown) => {
-  const ast = parser.parse(markdown)
-  const nodes = SimpleCommonMarkReact(ast, {className: 'markdown'})
+  const nodes = CommonMarkReact(markdown, {className: 'markdown'})
   const rootElement = React.createElement('div', null, nodes)
   return ReactDOMServer.renderToStaticMarkup(rootElement)
 }

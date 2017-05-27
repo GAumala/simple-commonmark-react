@@ -11,7 +11,6 @@
   "devDependencies": {
     "@types/commonmark": "^0.22.29",
     "@types/react": "^15.0.25",
-    "commonmark": "^0.27.0",
     "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -19,7 +18,10 @@
   },
   "scripts": {
     "test": "jest",
-    "tsc": "tsc ./index.ts",
+    "tsc": "tsc ./src/CommonMarkReact.ts",
     "dev": "yarn run tsc && yarn test"
+  },
+  "dependencies": {
+    "commonmark": "^0.27.0"
   }
 }

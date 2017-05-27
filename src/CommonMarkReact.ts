@@ -4,6 +4,8 @@ import * as Commonmark from 'commonmark'
 import RendererSelector from './renderers/RendererSelector'
 import ContainerStack from './ContainerStack'
 
+const parser = new Commonmark.Parser()
+
 const isValidReactElement = (element: string | ReactElement<any> | null):
   element is ReactElement<any> => {
     return element != null && (<ReactElement<any>>element).props !== undefined
@@ -33,10 +35,10 @@ const computeUniqueKey = (result: ReactElement<any>[], containerStack: Container
   return "" + result.length
 }
 
-const renderNodes = (nodesBlock: Commonmark.Node, customProps: object):
+const renderNodes = (source: string, customProps: object):
   ReactElement<any>[] => {
   const result: ReactElement<any>[] = []
-
+  const nodesBlock = parser.parse(source)
   const walker = nodesBlock.walker()
   const containerStack = new ContainerStack()
   let event: Commonmark.NodeWalkingStep

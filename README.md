@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react)
 
-This module renders Markdown as React components. Currently the only supported types are:
+This module renders Markdown as React components using [Markdown.js](https://www.npmjs.com/package/commonmark) as parser.
+
+This is still a work in progress and very limited. Currently the only supported types are:
 
 - code
 - code_block
@@ -36,7 +38,7 @@ class MarkdownComponent extends React.Component {
     const ast = parser.parse(source)
     return (
       <div>
-        { CommonMarkReact(ast, markdownProps) }  
+        { CommonMarkReact.renderNodes(ast, markdownProps) }  
       </div>
     )
   }  
