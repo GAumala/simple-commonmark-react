@@ -1,11 +1,15 @@
 # Simple CommonMark React
 
+[![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react)
+
 This module renders Markdown as React components. Currently the only supported types are:
 
 - paragraph
 - header
 - strong
 - emph
+- code
+- softbreak
 
 ## Install
 

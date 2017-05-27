@@ -3,9 +3,11 @@ const parser = new Commonmark.Parser()
 
 const RendererSelector = require('./RendererSelector.js').default
 const BoldRenderer = require('./BoldRenderer.js').default
+const CodeRenderer = require('./CodeRenderer.js').default
 const DocumentRenderer = require('./DocumentRenderer.js').default
 const ItalicsRenderer = require('./ItalicsRenderer.js').default
 const HeaderRenderer = require('./HeaderRenderer.js').default
+const LineBreakRenderer = require('./LineBreakRenderer.js').default
 const ParagraphRenderer = require('./ParagraphRenderer.js').default
 
 const getTestingNode = (source) => {
@@ -41,4 +43,16 @@ test('maps strong nodes to BoldRenderer', () => {
   const strongNode = getTestingNode('**this is bold**').lastChild
   const renderer = RendererSelector(strongNode)
   expect(renderer instanceof BoldRenderer).toBe(true)
+})
+
+test('maps code nodes to CodeRenderer', () => {
+  const codeNode = getTestingNode('`this is code`').lastChild
+  const renderer = RendererSelector(codeNode)
+  expect(renderer instanceof CodeRenderer).toBe(true)
+})
+
+test('maps linebreak nodes to LineBreakRenderer', () => {
+  const lineBreakNode = getTestingNode('this has\nline break').lastChild.prev
+  const renderer = RendererSelector(lineBreakNode)
+  expect(renderer instanceof LineBreakRenderer).toBe(true)
 })

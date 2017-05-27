@@ -25,6 +25,14 @@ const updateContainerStack = (containerStack: ContainerStack, node: Commonmark.N
     containerStack.pushContainer(node.type, newElement)
 }
 
+const computeUniqueKey = (result: ReactElement<any>[], containerStack: ContainerStack)
+    : string => {
+  const currentContainer = containerStack.peekCurrentContainer()
+  if (currentContainer)
+    return "" + currentContainer.props.children.length
+  return "" + result.length
+}
+
 const renderNodes = (nodesBlock: Commonmark.Node, customProps: object):
   ReactElement<any>[] => {
   const result: ReactElement<any>[] = []
@@ -35,7 +43,7 @@ const renderNodes = (nodesBlock: Commonmark.Node, customProps: object):
 
   while (event = walker.next()) {
     const currentNode = event.node
-    const key = "" + result.length
+    const key = computeUniqueKey(result, containerStack)
     if (event.entering) {
       const renderer = RendererSelector(currentNode)
       const currentReactElement = renderer.renderNode(customProps, key)
