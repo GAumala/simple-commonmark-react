@@ -19,6 +19,7 @@
   },
   "scripts": {
     "test": "jest",
-    "tsc": "tsc ./index.ts"
+    "tsc": "tsc ./index.ts",
+    "dev": "yarn run tsc && yarn test"
   }
 }

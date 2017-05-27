@@ -4,6 +4,8 @@ This module renders Markdown as React components. Currently the only supported t
 
 - paragraph
 - header
+- strong
+- emph
 
 ## Install
 
@@ -11,7 +13,7 @@ This module renders Markdown as React components. Currently the only supported t
 yarn add simple-commonmark-react
 ```
 
-## Usage 
+## Usage
 
 ```javascript
 import React from 'react'
