@@ -1,3 +1,6 @@
 node_modules/
+*.log
 src/*.js
 !src/*.test.js
+src/renderers/*.js
+!src/renderers/*test.js
