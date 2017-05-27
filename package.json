@@ -1,0 +1,24 @@
+{
+  "name": "simple-commonmark-react",
+  "version": "0.1.0",
+  "description": "React renderer for Commonmark (rationalized Markdown) written in TypeScript",
+  "main": "index.js",
+  "author": "Gabriel Aumala",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^15.5.4"
+  },
+  "devDependencies": {
+    "@types/commonmark": "^0.22.29",
+    "@types/react": "^15.0.25",
+    "commonmark": "^0.27.0",
+    "jest": "^20.0.4",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "typescript": "^2.3.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "tsc": "tsc ./index.ts"
+  }
+}

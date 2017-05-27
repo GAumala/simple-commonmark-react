@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 7
+cache: yarn
+
+script:
+  - yarn run tsc
+  - yarn test -- --coverage
