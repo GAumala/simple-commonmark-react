@@ -4,12 +4,13 @@
 
 This module renders Markdown as React components. Currently the only supported types are:
 
-- paragraph
-- header
-- strong
-- emph
 - code
+- code_block
+- emph
+- header
+- paragraph
 - softbreak
+- strong
 
 ## Install
 

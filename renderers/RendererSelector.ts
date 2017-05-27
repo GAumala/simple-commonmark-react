@@ -3,6 +3,7 @@ import * as Commonmark from 'commonmark'
 import CommonMarkRenderer from './CommonMarkRenderer'
 import BoldRenderer from './BoldRenderer'
 import CodeRenderer from './CodeRenderer'
+import CodeBlockRenderer from './CodeBlockRenderer'
 import DocumentRenderer from './DocumentRenderer'
 import ItalicsRenderer from './ItalicsRenderer'
 import HeaderRenderer from './HeaderRenderer'
@@ -14,6 +15,8 @@ const getRendererByNodeType = (node: Commonmark.Node): CommonMarkRenderer => {
   switch (node.type) {
     case 'code':
       return new CodeRenderer(node)
+    case 'code_block':
+      return new CodeBlockRenderer(node)
     case 'document':
       return new DocumentRenderer(node)
     case 'emph':
