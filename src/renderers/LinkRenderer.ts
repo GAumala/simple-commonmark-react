@@ -1,20 +1,21 @@
 import { ReactElement, createElement } from 'react'
 import { Node } from 'commonmark'
 import CommonMarkRenderer from './CommonMarkRenderer'
+import RenderOptions from '../RenderOptions'
 
 export default class LinkRenderer extends CommonMarkRenderer {
 
-  constructor (node: Node) {
-    super(node)
+  constructor (node: Node, options: RenderOptions | undefined) {
+    super(node, options)
   }
 
-  mergeCustomPropsWithDefaultProps(customProps: any, key: string): object {
-    const mergedProps: any = super.mergeCustomPropsWithDefaultProps(customProps, key)
+  getDefaultProps(key: string): object {
+    const defaultProps: any = super.getDefaultProps(key)
     const title = this.node.title
     if (title)
-      mergedProps.title = title
-    mergedProps.href = this.node.destination
-    return mergedProps
+      defaultProps.title = title
+    defaultProps.href = this.node.destination
+    return defaultProps
   }
 
   renderNodeWithProps(props: object): ReactElement<any> {

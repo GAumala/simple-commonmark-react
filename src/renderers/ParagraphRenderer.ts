@@ -1,11 +1,12 @@
 import { ReactElement, createElement } from 'react'
 import { Node } from 'commonmark'
 import CommonMarkRenderer from './CommonMarkRenderer'
+import RenderOptions from '../RenderOptions'
 
 export default class ParagraphRenderer extends CommonMarkRenderer {
 
-  constructor (node: Node) {
-    super(node)
+  constructor (node: Node, options: RenderOptions | undefined) {
+    super(node, options)
   }
 
   private isTightListChild(): boolean {

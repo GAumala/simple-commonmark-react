@@ -1,11 +1,12 @@
 import { ReactElement, createElement } from 'react'
 import { Node } from 'commonmark'
 import CommonMarkRenderer from './CommonMarkRenderer'
+import RenderOptions from '../RenderOptions'
 
 export default class CodeBlockRenderer extends CommonMarkRenderer {
 
-  constructor (node: Node) {
-    super(node)
+  constructor (node: Node, options: RenderOptions | undefined) {
+    super(node, options)
   }
 
   private findLanguageName(): string | undefined {
@@ -14,10 +15,10 @@ export default class CodeBlockRenderer extends CommonMarkRenderer {
       return codeInfo[0]
   }
 
-  private resolveClassName(customProps: any): string | undefined {
+  private resolveClassName(): string | undefined {
     const languageName = this.findLanguageName()
     const languageClass = languageName ? 'language-' + languageName +  ' ' : ''
-    const className = languageClass + (customProps.className || '')
+    const className = languageClass + (this.options.className || '')
     if (className.length > 0)
       return className
   }
@@ -28,7 +29,7 @@ export default class CodeBlockRenderer extends CommonMarkRenderer {
   }
 
   renderNodeWithProps(props: object): ReactElement<any> {
-    const className = this.resolveClassName(props)
+    const className = this.resolveClassName()
     const codeChild = this.renderInnerCodeElement(props)
     return createElement('pre', { ...props, className }, codeChild)
   }

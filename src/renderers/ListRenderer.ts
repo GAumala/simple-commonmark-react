@@ -1,19 +1,20 @@
 import { ReactElement, createElement } from 'react'
 import { Node } from 'commonmark'
 import CommonMarkRenderer from './CommonMarkRenderer'
+import RenderOptions from '../RenderOptions'
 
 export default class ListRenderer extends CommonMarkRenderer {
 
-  constructor (node: Node) {
-    super(node)
+  constructor (node: Node, options: RenderOptions | undefined) {
+    super(node, options)
   }
 
-  mergeCustomPropsWithDefaultProps(customProps: any, key: string): object {
-    const mergedProps: any = super.mergeCustomPropsWithDefaultProps(customProps, key)
+  getDefaultProps(key: string): object {
+    const defaultProps: any = super.getDefaultProps(key)
     const listStart = this.node.listStart
     if (listStart != null && listStart !== 1)
-      mergedProps.start = listStart
-    return mergedProps
+      defaultProps.start = listStart
+    return defaultProps
 
   }
 

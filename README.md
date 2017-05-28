@@ -29,15 +29,21 @@ yarn add simple-commonmark-react
 
 ## Usage
 
-This module exports a single attribute: a funcion called `renderNodes` which takes two arguments: `source` and `customProps`. It returns an array of React elements that you can easily render inside a div.
+This module exports a single attribute: a funcion called `renderNodes` which takes two arguments: `source` and `options`. It returns an array of React elements that you can easily render inside a div.
 
 ```typescript
-const renderNodes = (source: string, customProps: object | undefined): ReactElement<any>[] => {
+const renderNodes = (source: string, options: RenderOptions | undefined): ReactElement<any>[] => {
   //implementation
 }
 ```
 
-`source` is the markdown string that you want to render. `customProps` is an optional argument with the props that you want to pass to every single markdown component. `customProps` is useful if you want to set a special class to every component so that you can style it with CSS. It is still an experimental API so it might change in the future.
+`source` is the markdown string that you want to render. `options` is an optional argument that allows you to configure the rendering. All options are `undefined` by default. The following options are supported:
+
+Name | Type | Description
+--- | --- | ---
+`className` | `string` | A string with the class name(s) to add to every single markdown component, useful if you want to style your components with CSS.
+`allowSoftBreaks` | `boolean` | If `true`, all line breaks (`\n`) are rendered as `<br />` tags
+
 
 ### Example
 
@@ -49,10 +55,10 @@ class MarkdownComponent extends React.Component {
   render() {
     const source = this.props.markdownText
     // we set className prop so that we can style each element with CSS
-    const markdownProps = { className: 'markdown' }
+    const markdownOptions = { className: 'markdown' }
     return (
       <div>
-        { CommonMarkReact.renderNodes(source, markdownProps) }  
+        { CommonMarkReact.renderNodes(source, markdownOptions) }  
       </div>
     )
   }  

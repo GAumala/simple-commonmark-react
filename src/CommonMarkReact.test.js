@@ -3,8 +3,8 @@ const ReactDOMServer = require('react-dom/server')
 
 const CommonMarkReact = require('./CommonMarkReact.js').default
 
-const renderToString = (markdown) => {
-  const nodes = CommonMarkReact(markdown, {className: 'markdown'})
+const renderToString = (markdown, options) => {
+  const nodes = CommonMarkReact(markdown, Object.assign({className: 'markdown'}, options))
   const rootElement = React.createElement('div', null, nodes)
   return ReactDOMServer.renderToStaticMarkup(rootElement)
 }
@@ -16,10 +16,17 @@ test('Renders markdown tags: header and paragraph with custom class names', () =
   expect(renderedString).toEqual(expectedHtml)
 })
 
-test('Renders inline markdown tags: bold, code and emph with custom class names', () => {
+test('Renders inline markdown tags: bold, code, softbreak and emph with custom class names', () => {
+  const markdown = 'Hello World!\n*this* is italics, **this** is bold and `this` is code'
+  const expectedHtml = '<div><p class="markdown">Hello World!\n<em class="markdown">this</em> is italics, <strong class="markdown">this</strong> is bold and <code class="markdown">this</code> is code</p></div>'
+  const renderedString = renderToString(markdown)
+  expect(renderedString).toEqual(expectedHtml)
+})
+
+test('Renders line breaks as <br/> if allowSoftBreaks option is active', () => {
   const markdown = 'Hello World!\n*this* is italics, **this** is bold and `this` is code'
   const expectedHtml = '<div><p class="markdown">Hello World!<br/><em class="markdown">this</em> is italics, <strong class="markdown">this</strong> is bold and <code class="markdown">this</code> is code</p></div>'
-  const renderedString = renderToString(markdown)
+  const renderedString = renderToString(markdown, {allowSoftBreaks: true})
   expect(renderedString).toEqual(expectedHtml)
 })
 

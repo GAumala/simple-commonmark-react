@@ -3,6 +3,7 @@ import * as Commonmark from 'commonmark'
 
 import RendererSelector from './renderers/RendererSelector'
 import ContainerStack from './ContainerStack'
+import RenderOptions from './RenderOptions'
 
 const parser = new Commonmark.Parser()
 
@@ -41,7 +42,7 @@ const computeUniqueKey = (result: ReactElement<any>[], containerStack: Container
   return "" + result.length
 }
 
-const renderNodes = (source: string, customProps: object | undefined):
+const renderNodes = (source: string, options: RenderOptions | undefined):
   ReactElement<any>[] => {
   const result: ReactElement<any>[] = []
   const nodesBlock = parser.parse(source)
@@ -53,8 +54,8 @@ const renderNodes = (source: string, customProps: object | undefined):
     const currentNode = event.node
     if (event.entering) {
       const key = computeUniqueKey(result, containerStack)
-      const renderer = RendererSelector(currentNode)
-      const currentReactElement = renderer.renderNode(customProps, key)
+      const renderer = RendererSelector(currentNode, options)
+      const currentReactElement = renderer.renderNode(key)
       insertNewElementToResult(result, containerStack, currentReactElement)
       updateContainerStack(containerStack, currentNode, currentReactElement)
     } else {
