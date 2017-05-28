@@ -1,2 +1,4 @@
+coverage/
 src/*.ts
+!src/*d.ts
 src/*.test.js

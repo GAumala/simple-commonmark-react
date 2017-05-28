@@ -1,6 +1,9 @@
 node_modules/
+coverage/
 *.log
 src/*.js
+src/*.d.ts
 !src/*.test.js
 src/renderers/*.js
+src/renderers/*.d.ts
 !src/renderers/*test.js

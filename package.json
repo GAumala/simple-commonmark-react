@@ -18,6 +18,7 @@
   "devDependencies": {
     "@types/commonmark": "^0.22.29",
     "@types/react": "^15.0.25",
+    "coveralls": "^2.13.1",
     "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -26,7 +27,10 @@
   "scripts": {
     "test": "jest",
     "tsc": "tsc ./src/CommonMarkReact.ts",
-    "dev": "yarn run tsc && yarn test"
+    "dev": "yarn run tsc && yarn test",
+    "ci": "yarn run tsc && yarn test -- --coverage && cat ./coverage/lcov.info | coveralls"
+
+
   },
   "dependencies": {
     "commonmark": "^0.27.0"

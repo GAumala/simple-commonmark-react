@@ -1,6 +1,6 @@
 # Simple CommonMark React
 
-[![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react)
+[![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react) [![Coverage Status](https://coveralls.io/repos/github/GAumala/simple-commonmark-react/badge.svg?branch=master)](https://coveralls.io/github/GAumala/simple-commonmark-react?branch=master)
 
 This module renders Markdown as React components using [Markdown.js](https://www.npmjs.com/package/commonmark) as parser.
 
