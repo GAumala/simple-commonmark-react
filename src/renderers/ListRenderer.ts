@@ -2,7 +2,7 @@ import { ReactElement, createElement } from 'react'
 import { Node } from 'commonmark'
 import CommonMarkRenderer from './CommonMarkRenderer'
 
-export default class LinkRenderer extends CommonMarkRenderer {
+export default class ListRenderer extends CommonMarkRenderer {
 
   constructor (node: Node) {
     super(node)
@@ -10,14 +10,16 @@ export default class LinkRenderer extends CommonMarkRenderer {
 
   mergeCustomPropsWithDefaultProps(customProps: any, key: string): object {
     const mergedProps: any = super.mergeCustomPropsWithDefaultProps(customProps, key)
-    const title = this.node.title
-    if (title)
-      mergedProps.title = title
-    mergedProps.href = this.node.destination
+    const listStart = this.node.listStart
+    if (listStart != null && listStart !== 1)
+      mergedProps.start = listStart
     return mergedProps
+
   }
 
   renderNodeWithProps(props: object): ReactElement<any> {
-    return createElement('a', props, [])
+    const isBullet = this.node.listType.toLowerCase() === 'bullet'
+    const listTag = isBullet ? 'ul' : 'ol'
+    return createElement(listTag, props, [])
   }
 }

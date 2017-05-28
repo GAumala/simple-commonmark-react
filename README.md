@@ -11,7 +11,9 @@ This is still a work in progress and very limited. Currently the only supported 
 - emph
 - header
 - image
+- item
 - link
+- list
 - paragraph
 - softbreak
 - strong

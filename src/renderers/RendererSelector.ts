@@ -10,6 +10,8 @@ import ImageRenderer from './ImageRenderer'
 import ItalicsRenderer from './ItalicsRenderer'
 import LineBreakRenderer from './LineBreakRenderer'
 import LinkRenderer from './LinkRenderer'
+import ListItemRenderer from './ListItemRenderer'
+import ListRenderer from './ListRenderer'
 import ParagraphRenderer from './ParagraphRenderer'
 import TextRenderer from './TextRenderer'
 
@@ -27,8 +29,12 @@ const getRendererByNodeType = (node: Commonmark.Node): CommonMarkRenderer => {
       return new HeaderRenderer(node)
     case 'image':
       return new ImageRenderer(node)
+    case 'item':
+      return new ListItemRenderer(node)
     case 'link':
       return new LinkRenderer(node)
+    case 'list':
+      return new ListRenderer(node)
     case 'paragraph':
       return new ParagraphRenderer(node)
     case 'softbreak':

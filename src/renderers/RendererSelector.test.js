@@ -11,6 +11,8 @@ const ImageRenderer = require('./ImageRenderer.js').default
 const ItalicsRenderer = require('./ItalicsRenderer.js').default
 const LineBreakRenderer = require('./LineBreakRenderer.js').default
 const LinkRenderer = require('./LinkRenderer.js').default
+const ListItemRenderer = require('./ListItemRenderer.js').default
+const ListRenderer = require('./ListRenderer.js').default
 const ParagraphRenderer = require('./ParagraphRenderer.js').default
 
 const getTestingNode = (source) => {
@@ -76,4 +78,14 @@ test('maps image nodes to ImageRenderer', () => {
   const imageNode = getTestingNode('Here is an ![image](/pic.png)').lastChild
   const renderer = RendererSelector(imageNode)
   expect(renderer instanceof ImageRenderer).toBe(true)
+})
+
+test('maps list nodes to ListRenderer and item nodes to ListItemRenderer', () => {
+  const listNode = getTestingNode('- item 1\n- item 2\n')
+  const listRenderer = RendererSelector(listNode)
+  expect(listRenderer instanceof ListRenderer).toBe(true)
+
+  const listItemNode = listNode.firstChild
+  const listItemRenderer = RendererSelector(listItemNode)
+  expect(listItemRenderer instanceof ListItemRenderer).toBe(true)
 })

@@ -24,7 +24,9 @@ export default class ImageRenderer extends CommonMarkRenderer {
 
   mergeCustomPropsWithDefaultProps(customProps: any, key: string): object {
     const mergedProps: any = super.mergeCustomPropsWithDefaultProps(customProps, key)
-    mergedProps.title = this.node.title
+    const title = this.node.title
+    if (title)
+      mergedProps.title = title
     mergedProps.alt = this.findAltText()
     mergedProps.src = this.node.destination
     return mergedProps

@@ -8,7 +8,17 @@ export default class ParagraphRenderer extends CommonMarkRenderer {
     super(node)
   }
 
-  renderNodeWithProps(props: object): ReactElement<any> {
-    return createElement('p', props, [])
+  private isTightListChild(): boolean {
+    const parent = this.node.parent
+    return parent.type === 'item' && parent.listTight
+  }
+
+  renderNodeWithProps(props: object): ReactElement<any> | null {
+    if (this.isTightListChild())
+      // Don't create <p> tags in tight lists.
+      // paragraph children should be append to the <li> element instead
+      return null
+    else
+      return createElement('p', props, [])
   }
 }
