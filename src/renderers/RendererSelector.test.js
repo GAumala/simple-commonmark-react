@@ -6,9 +6,11 @@ const BoldRenderer = require('./BoldRenderer.js').default
 const CodeRenderer = require('./CodeRenderer.js').default
 const CodeBlockRenderer = require('./CodeBlockRenderer.js').default
 const DocumentRenderer = require('./DocumentRenderer.js').default
-const ItalicsRenderer = require('./ItalicsRenderer.js').default
 const HeaderRenderer = require('./HeaderRenderer.js').default
+const ImageRenderer = require('./ImageRenderer.js').default
+const ItalicsRenderer = require('./ItalicsRenderer.js').default
 const LineBreakRenderer = require('./LineBreakRenderer.js').default
+const LinkRenderer = require('./LinkRenderer.js').default
 const ParagraphRenderer = require('./ParagraphRenderer.js').default
 
 const getTestingNode = (source) => {
@@ -62,4 +64,16 @@ test('maps code_block nodes to CodeBlockRenderer', () => {
   const codeBlockNode = getTestingNode('```c\n#include <stdio.h>\n```')
   const renderer = RendererSelector(codeBlockNode)
   expect(renderer instanceof CodeBlockRenderer).toBe(true)
+})
+
+test('maps link nodes to LinkRenderer', () => {
+  const linkNode = getTestingNode('Here is a [link](https://fsf.org)').lastChild
+  const renderer = RendererSelector(linkNode)
+  expect(renderer instanceof LinkRenderer).toBe(true)
+})
+
+test('maps image nodes to ImageRenderer', () => {
+  const imageNode = getTestingNode('Here is an ![image](/pic.png)').lastChild
+  const renderer = RendererSelector(imageNode)
+  expect(renderer instanceof ImageRenderer).toBe(true)
 })

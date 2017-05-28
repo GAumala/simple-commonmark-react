@@ -11,6 +11,11 @@ const isValidReactElement = (element: string | ReactElement<any> | null):
     return element != null && (<ReactElement<any>>element).props !== undefined
 }
 
+const isValidContainer = (node: Commonmark.Node): boolean => {
+  //while images are markdown containers, they are not react containers (can't have children)
+  return node.isContainer && node.type !== 'image'
+}
+
 const insertNewElementToResult = (result: ReactElement<any>[], stack: ContainerStack,
   newElement: string | ReactElement<any> | null) => {
     const currentContainer = stack.peekCurrentContainer()
@@ -23,19 +28,20 @@ const insertNewElementToResult = (result: ReactElement<any>[], stack: ContainerS
 
 const updateContainerStack = (containerStack: ContainerStack, node: Commonmark.Node,
     newElement: string | ReactElement<any> | null) => {
-  if (node.isContainer && isValidReactElement(newElement))
+  if (isValidContainer(node) && isValidReactElement(newElement))
     containerStack.pushContainer(node.type, newElement)
 }
 
 const computeUniqueKey = (result: ReactElement<any>[], containerStack: ContainerStack)
     : string => {
   const currentContainer = containerStack.peekCurrentContainer()
-  if (currentContainer)
+  if (currentContainer) {
     return "" + currentContainer.props.children.length
+  }
   return "" + result.length
 }
 
-const renderNodes = (source: string, customProps: object):
+const renderNodes = (source: string, customProps: object | undefined):
   ReactElement<any>[] => {
   const result: ReactElement<any>[] = []
   const nodesBlock = parser.parse(source)
@@ -45,8 +51,8 @@ const renderNodes = (source: string, customProps: object):
 
   while (event = walker.next()) {
     const currentNode = event.node
-    const key = computeUniqueKey(result, containerStack)
     if (event.entering) {
+      const key = computeUniqueKey(result, containerStack)
       const renderer = RendererSelector(currentNode)
       const currentReactElement = renderer.renderNode(customProps, key)
       insertNewElementToResult(result, containerStack, currentReactElement)

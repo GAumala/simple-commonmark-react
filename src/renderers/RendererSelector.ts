@@ -5,9 +5,11 @@ import BoldRenderer from './BoldRenderer'
 import CodeRenderer from './CodeRenderer'
 import CodeBlockRenderer from './CodeBlockRenderer'
 import DocumentRenderer from './DocumentRenderer'
-import ItalicsRenderer from './ItalicsRenderer'
 import HeaderRenderer from './HeaderRenderer'
+import ImageRenderer from './ImageRenderer'
+import ItalicsRenderer from './ItalicsRenderer'
 import LineBreakRenderer from './LineBreakRenderer'
+import LinkRenderer from './LinkRenderer'
 import ParagraphRenderer from './ParagraphRenderer'
 import TextRenderer from './TextRenderer'
 
@@ -23,6 +25,10 @@ const getRendererByNodeType = (node: Commonmark.Node): CommonMarkRenderer => {
       return new ItalicsRenderer(node)
     case 'heading':
       return new HeaderRenderer(node)
+    case 'image':
+      return new ImageRenderer(node)
+    case 'link':
+      return new LinkRenderer(node)
     case 'paragraph':
       return new ParagraphRenderer(node)
     case 'softbreak':

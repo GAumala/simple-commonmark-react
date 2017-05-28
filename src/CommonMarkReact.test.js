@@ -8,6 +8,7 @@ const renderToString = (markdown) => {
   const rootElement = React.createElement('div', null, nodes)
   return ReactDOMServer.renderToStaticMarkup(rootElement)
 }
+
 test('Renders markdown tags: header and paragraph with custom class names', () => {
   const markdown = '## Title\n\nHello World!\n'
   const expectedHtml = '<div><h2 class="markdown">Title</h2><p class="markdown">Hello World!</p></div>'
@@ -36,6 +37,19 @@ test('Renders code_block without language name with custom class names', () => {
   expect(renderedString).toEqual(expectedHtml)
 })
 
+test('Renders markdown link with custom class names', () => {
+  const markdown = 'Check out this [link](https://fsf.org) and [this one](/local/path "some server url") with title'
+  const renderedString = renderToString(markdown)
+  const expectedHtml = '<div><p class="markdown">Check out this <a class="markdown" title="" href="https://fsf.org">link</a> and <a class="markdown" title="some server url" href="/local/path">this one</a> with title</p></div>'
+  expect(renderedString).toEqual(expectedHtml)
+})
+
+test('Renders markdown images with custom class names', () => {
+  const markdown = 'Check out this ![image](https://somewebsite.org/pic.png) it is inline\n\nAlso this one:\n\n![local pic](/public/photo.png "my pic")'
+  const renderedString = renderToString(markdown)
+  const expectedHtml = '<div><p class="markdown">Check out this <img class="markdown" title="" alt="image" src="https://somewebsite.org/pic.png"/> it is inline</p><p class="markdown">Also this one:</p><p class="markdown"><img class="markdown" title="my pic" alt="local pic" src="/public/photo.png"/></p></div>'
+  expect(renderedString).toEqual(expectedHtml)
+})
 
 test('Renders correctly when customProps is undefined', () => {
   const markdown = '# Code Test\n\n Check this code\n\n```c\n\n#include <stdio.h>\n```'
