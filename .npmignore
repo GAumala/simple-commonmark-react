@@ -1,4 +1,5 @@
 coverage/
-src/*.ts
-!src/*d.ts
-src/*.test.js
+*.js.map
+*.test.js
+!*.d.ts
+*.ts

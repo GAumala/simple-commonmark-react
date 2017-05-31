@@ -42,7 +42,7 @@ const computeUniqueKey = (result: ReactElement<any>[], containerStack: Container
   return "" + result.length
 }
 
-const renderNodes = (source: string, options: RenderOptions | undefined):
+export const renderNodes = (source: string, options: RenderOptions | undefined):
   ReactElement<any>[] => {
   const result: ReactElement<any>[] = []
   const nodesBlock = parser.parse(source)
@@ -65,5 +65,3 @@ const renderNodes = (source: string, options: RenderOptions | undefined):
   }
   return result
 }
-
-export default renderNodes

@@ -1,6 +1,7 @@
 node_modules/
 coverage/
 *.log
+*.js.map
 src/*.js
 src/*.d.ts
 !src/*.test.js

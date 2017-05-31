@@ -4,15 +4,15 @@ import { ReactElement } from 'react'
 import RenderOptions from '../RenderOptions'
 
 export default abstract class CommonMarkRenderer {
-  node: Node
-  options: RenderOptions
+  protected node: Node
+  protected options: RenderOptions
 
   constructor(node: Node, options: RenderOptions | undefined) {
     this.node = node
     this.options = options || new RenderOptions()
   }
 
-  getDefaultProps(key: string): object {
+  protected getDefaultProps(key: string): object {
     const className = this.options.className
     return { className, key }
   }

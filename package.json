@@ -1,6 +1,6 @@
 {
   "name": "simple-commonmark-react",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "keywords": [
     "commonmark",
     "markdown",
@@ -9,7 +9,7 @@
   ],
   "repository": "GAumala/simple-commonmark-react",
   "description": "React renderer for Commonmark (rationalized Markdown) written in TypeScript",
-  "main": "index.js",
+  "main": "src/CommonMarkReact.js",
   "author": "Gabriel Aumala",
   "license": "MIT",
   "peerDependencies": {
@@ -25,12 +25,11 @@
     "typescript": "^2.3.3"
   },
   "scripts": {
-    "test": "jest",
-    "tsc": "tsc ./src/CommonMarkReact.ts",
-    "dev": "yarn run tsc && yarn test",
-    "ci": "yarn run tsc && yarn test -- --coverage && cat ./coverage/lcov.info | coveralls"
-
-
+    "test": "jest --coverage",
+    "build": "tsc -d ./src/CommonMarkReact.ts",
+    "dev": "yarn run build && yarn test",
+    "ci": "yarn run build && yarn test && cat ./coverage/lcov.info | coveralls",
+    "release": "yarn run tsc && publish"
   },
   "dependencies": {
     "commonmark": "^0.27.0"

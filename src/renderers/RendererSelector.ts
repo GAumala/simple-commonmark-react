@@ -1,4 +1,4 @@
-import * as Commonmark from 'commonmark'
+import { Node } from 'commonmark'
 
 import RenderOptions from '../RenderOptions'
 import CommonMarkRenderer from './CommonMarkRenderer'
@@ -16,8 +16,20 @@ import ListRenderer from './ListRenderer'
 import ParagraphRenderer from './ParagraphRenderer'
 import TextRenderer from './TextRenderer'
 
-const getRendererByNodeType = (node: Commonmark.Node, options: RenderOptions | undefined):
+const getCustomRenderer = (node: Node, options: RenderOptions | undefined):
+  (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined => {
+  if (options) {
+    const customRenderers = options.customRenderers
+    if (customRenderers)
+      return customRenderers[node.type]
+  }
+}
+const getRendererByNodeType = (node: Node, options: RenderOptions | undefined):
   CommonMarkRenderer => {
+
+    const CustomRenderer = getCustomRenderer(node, options)
+    if (CustomRenderer) return new CustomRenderer(node, options)
+
   switch (node.type) {
     case 'code':
       return new CodeRenderer(node, options)

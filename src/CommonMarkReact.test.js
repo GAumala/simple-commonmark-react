@@ -1,10 +1,10 @@
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 
-const CommonMarkReact = require('./CommonMarkReact.js').default
+const { renderNodes} = require('./CommonMarkReact.js')
 
 const renderToString = (markdown, options) => {
-  const nodes = CommonMarkReact(markdown, Object.assign({className: 'markdown'}, options))
+  const nodes = renderNodes(markdown, Object.assign({className: 'markdown'}, options))
   const rootElement = React.createElement('div', null, nodes)
   return ReactDOMServer.renderToStaticMarkup(rootElement)
 }
@@ -81,7 +81,7 @@ test('Renders loose lists with custom class names', () => {
 
 test('Renders correctly when customProps is undefined', () => {
   const markdown = '# Code Test\n\n Check this code\n\n```c\n\n#include <stdio.h>\n```'
-  const nodes = CommonMarkReact(markdown)
+  const nodes = renderNodes(markdown)
   const rootElement = React.createElement('div', null, nodes)
   const renderedString =  ReactDOMServer.renderToStaticMarkup(rootElement)
   const expectedHtml = '<div><h1>Code Test</h1><p>Check this code</p><pre class="language-c "><code>\n#include &lt;stdio.h&gt;\n</code></pre></div>'
