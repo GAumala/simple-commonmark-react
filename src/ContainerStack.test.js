@@ -1,9 +1,9 @@
-const ContainerStack = require('./ContainerStack.js').default
-const React = require('react')
+import React from 'react';
+import ContainerStack from './ContainerStack.js';
 
 const removeAndPeek = (stack, removedType, expectedPeekedContainer) => {
   stack.removeContainer(removedType)
-  peekedContainer = stack.peekCurrentContainer()
+  const peekedContainer = stack.peekCurrentContainer()
   expect(peekedContainer).toBe(expectedPeekedContainer)
 }
 

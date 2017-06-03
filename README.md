@@ -29,7 +29,7 @@ yarn add simple-commonmark-react
 
 ## Usage
 
-This module exports a single attribute: a funcion called `renderNodes` which takes two arguments: `source` and `options`. It returns an array of React elements that you can easily render inside a div.
+This module exports a single attribute: a function called `renderNodes` which takes two arguments: `source` and `options`. It returns an array of React elements that you can easily render inside a div.
 
 ```typescript
 const renderNodes = (source: string, options: RenderOptions | undefined): ReactElement<any>[] => {
@@ -66,27 +66,29 @@ class MarkdownComponent extends React.Component {
 }
 ```
 
-## Styling
+## How It Works
 
-The reccomended way to style your components is to set a class name to the `rendererOptions` object and use CSS. To control the style for each markdown element you should know which html tags are used to render it. The following table shows a rough aproximation of how some markdown elements are converted to HTML. it isn't too detailed, just the bare minimum for you to understand which tags you should style.
+This module parses your markdown with CommonMark, and then walks the generated AST and assigns each node type a different renderer. Renderers here are classes in [./src/renderers/](https://github.com/GAumala/simple-commonmark-react/tree/master/src/renderers). The renderer takes a node, a `renderOptions` object and a unique key, and returns a React element. The following table shows a rough aproximation of how each node is renderered.
 
-Type | Input Markdown | Output HTML
---- | --- | ---
-emph | `*italics*` | `<em>italics</em>`
-strong | `**bold**` | `<strong>bold</strong>`
-link | `[link](/to/some/path)` | `<a href="/to/some/path">link</a>`
-image | `![link](/to/some/pic.png)` | `<img src="/to/some/pic.png">image</img>`
-code | ``inline code`` | `<code>inline code</code>`
-block quote | `\n```\nblock code\n```\n` | `<pre><code>block code</code></pre>`
-paragraph | `a paragraph` | `<p>a paragraph</p>`
-list (bullet) | `- item 1\n- item 2` | `<ul><li>item 1</li><li>item 2</li></ul>`
-list (ordered) | `1. item 1\n2. item 2` | `<ol><li>item 1</li><li>item 2</li></ol>`
-heading | `# title` | `<h1>title</h1>`
+Type | Renderer Class | Input Markdown | Output HTML
+--- | --- | --- | ---
+emph | [ItalicsRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ItalicsRenderer.ts) | `*italics*` | `<em>italics</em>`
+strong | [BoldRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/BoldRenderer.ts) | `**bold**` | `<strong>bold</strong>`
+link | [LinkRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/LinkRenderer.ts) | `[link](/to/some/path)` | `<a href="/to/some/path">link</a>`
+image | [ImageRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ImageRenderer.ts) | `![link](/to/some/pic.png)` | `<img src="/to/some/pic.png">image</img>`
+code | [CodeRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/CodeRenderer.ts) | ``inline code`` | `<code>inline code</code>`
+code block | [CodeBlockRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/CodeBlockRenderer.ts) | `\n```\nblock code\n```\n` | `<pre><code>block code</code></pre>`
+paragraph | [ParagraphRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ParagraphRenderer.ts) | `a paragraph` | `<p>a paragraph</p>`
+list (bullet) | [ListRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListRenderer.ts) & [ListItemRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListItemRenderer.ts) | `- item 1\n- item 2` | `<ul><li>item 1</li><li>item 2</li></ul>`
+list (ordered) | [ListRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListRenderer.ts) & [ListItemRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListItemRenderer.ts) |`1. item 1\n2. item 2` | `<ol><li>item 1</li><li>item 2</li></ol>`
+heading | [HeaderRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/HeaderRenderer.ts) | `# title` | `<h1>title</h1>`
+
+Once you have an idea how each is rendered, you can style your components with CSS.
 
 ## Customization
 
 If you can't get the style that you want with CSS or want to customize even further
-you can override the default renderers for every markdown type with your custom renderer. There are many ways to create new renderers. Let's start with a simple but practical
+you can override the default renderer classes from the previous section with your custom renderer. There are many ways to create new renderers. Let's start with a simple but practical
 example: Let's create a new renderer for `link` that uses [React Router](https://reacttraining.com/react-router/) for navigation.
 
 ### Custom renderer with TypeScript
@@ -132,7 +134,7 @@ export default class ReactRouterLinkRenderer extends LinkRenderer {
   }
 }
 ```
-As you can see this is identical to the TypeScript implementation, it only lacks type annotaions.
+As you can see this is identical to the TypeScript implementation, it only lacks type annotations.
 
 ### Custom renderer with regular JavaScript
 
@@ -164,7 +166,7 @@ module.exports = function ReactRouterLinkRenderer(node, options) {
 
 This one is a bit different, a lot more verbose since you can't extend the default  renderer and let it do all the heavy lifting. You have to manually get your props from the markdown node and `rendererOptions`. Also the function that you implement is `renderNode` and not `renderNodeWithProps` because the default renderers expose only `renderNode`, that's the function that the library will call when it's time to render.
 
-All 3 implementations are equivalent, once it is ready all you have to do is add the renderer to `renderOptions`'s `customRenderers`.   
+All 3 implementations are equivalent, in fact, you can get the TypeScript implementation by importing [simple-commonmark-react-router](https://github.com/GAumala/simple-commonmark-react-router) into your project. once it is ready all you have to do is add the renderer to `renderOptions`'s `customRenderers`.   
 
 ```javascript
 import React from 'react'

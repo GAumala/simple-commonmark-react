@@ -18,17 +18,20 @@
   "devDependencies": {
     "@types/commonmark": "^0.22.29",
     "@types/react": "^15.0.25",
+    "babel-jest": "^20.0.3",
+    "babel-preset-es2015": "^6.24.1",
     "coveralls": "^2.13.1",
     "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-test-renderer": "^15.5.4",
     "typescript": "^2.3.3"
   },
   "scripts": {
     "test": "jest --coverage",
     "build": "tsc -d ./src/CommonMarkReact.ts",
     "dev": "yarn run build && yarn test",
-    "ci": "yarn run build && yarn test && cat ./coverage/lcov.info | coveralls",
+    "ci": "yarn run build -- --target es2015 --moduleResolution node && yarn test && cat ./coverage/lcov.info | coveralls",
     "release": "yarn run tsc && publish"
   },
   "dependencies": {

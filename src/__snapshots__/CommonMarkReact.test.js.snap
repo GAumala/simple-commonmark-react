@@ -1,0 +1,345 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders bullet lists with custom class names 1`] = `
+<div>
+  <ul
+    className="markdown"
+  >
+    <li
+      className="markdown"
+    >
+      item with 
+      <a
+        className="markdown"
+        href="https://eff.org"
+      >
+        link
+      </a>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <code
+        className="markdown"
+      >
+        code
+      </code>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <strong
+        className="markdown"
+      >
+        bold
+      </strong>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <em
+        className="markdown"
+      >
+        emph
+      </em>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Renders code_block without language name with custom class names 1`] = `
+<div>
+  <h1
+    className="markdown"
+  >
+    Code Test
+  </h1>
+  <p
+    className="markdown"
+  >
+    Check this code
+  </p>
+  <pre
+    className="markdown"
+  >
+    <code
+      className="markdown"
+    >
+      Some pseudo code
+      
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Renders correctly when customProps is undefined 1`] = `
+<div>
+  <h1
+    className={undefined}
+  >
+    Code Test
+  </h1>
+  <p
+    className={undefined}
+  >
+    Check this code
+  </p>
+  <pre
+    className="language-c "
+  >
+    <code
+      className={undefined}
+    >
+      
+      #include &lt;stdio.h&gt;
+      
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Renders inline markdown tags: bold, code, softbreak and emph with custom class names 1`] = `
+<div>
+  <p
+    className="markdown"
+  >
+    Hello World
+    !
+    
+    
+    <em
+      className="markdown"
+    >
+      this
+    </em>
+     is italics, 
+    <strong
+      className="markdown"
+    >
+      this
+    </strong>
+     is bold and 
+    <code
+      className="markdown"
+    >
+      this
+    </code>
+     is code
+  </p>
+</div>
+`;
+
+exports[`Renders line breaks as <br/> if allowSoftBreaks option is active 1`] = `
+<div>
+  <p
+    className="markdown"
+  >
+    Hello World
+    !
+    <br />
+    <em
+      className="markdown"
+    >
+      this
+    </em>
+     is italics, 
+    <strong
+      className="markdown"
+    >
+      this
+    </strong>
+     is bold and 
+    <code
+      className="markdown"
+    >
+      this
+    </code>
+     is code
+  </p>
+</div>
+`;
+
+exports[`Renders loose lists with custom class names 1`] = `
+<div>
+  <ul
+    className="markdown"
+  >
+    <li
+      className="markdown"
+    >
+      <p
+        className="markdown"
+      >
+        item with 
+        <a
+          className="markdown"
+          href="https://eff.org"
+        >
+          link
+        </a>
+      </p>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <em
+        className="markdown"
+      >
+        emph
+      </em>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Renders markdown images with custom class names 1`] = `
+<div>
+  <p
+    className="markdown"
+  >
+    Check out this 
+    <img
+      alt="image"
+      className="markdown"
+      src="https://somewebsite.org/pic.png"
+    />
+     it is inline
+  </p>
+  <p
+    className="markdown"
+  >
+    Also this one:
+  </p>
+  <p
+    className="markdown"
+  >
+    <img
+      alt="local pic"
+      className="markdown"
+      src="/public/photo.png"
+      title="my pic"
+    />
+  </p>
+</div>
+`;
+
+exports[`Renders markdown link with custom class names 1`] = `
+<div>
+  <p
+    className="markdown"
+  >
+    Check out this 
+    <a
+      className="markdown"
+      href="https://fsf.org"
+    >
+      link
+    </a>
+     and 
+    <a
+      className="markdown"
+      href="/local/path"
+      title="some server url"
+    >
+      this one
+    </a>
+     with title
+  </p>
+</div>
+`;
+
+exports[`Renders markdown tags: header and paragraph with custom class names 1`] = `
+<div>
+  <h2
+    className="markdown"
+  >
+    Title
+  </h2>
+  <p
+    className="markdown"
+  >
+    Hello World
+    !
+  </p>
+</div>
+`;
+
+exports[`Renders markdown tags: header, paragraph and code_block with custom class names 1`] = `
+<div>
+  <h1
+    className="markdown"
+  >
+    Code Test
+  </h1>
+  <p
+    className="markdown"
+  >
+    Check this code
+  </p>
+  <pre
+    className="language-c markdown"
+  >
+    <code
+      className="markdown"
+    >
+      
+      #include &lt;stdio.h&gt;
+      
+    </code>
+  </pre>
+</div>
+`;
+
+exports[`Renders ordered lists with custom class names 1`] = `
+<div>
+  <ol
+    className="markdown"
+  >
+    <li
+      className="markdown"
+    >
+      item with 
+      <a
+        className="markdown"
+        href="https://eff.org"
+      >
+        link
+      </a>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <code
+        className="markdown"
+      >
+        code
+      </code>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <strong
+        className="markdown"
+      >
+        bold
+      </strong>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <em
+        className="markdown"
+      >
+        emph
+      </em>
+    </li>
+  </ol>
+</div>
+`;

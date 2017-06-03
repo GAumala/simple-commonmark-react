@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders custom bold 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    <div
+      className="bold"
+    >
+      hello world
+    </div>
+  </p>
+</div>
+`;
+
+exports[`Renders custom code block 1`] = `
+<div>
+  <div
+    className="code-block"
+  />
+</div>
+`;
+
+exports[`Renders custom header 1`] = `
+<div>
+  <div
+    className="header"
+  >
+    hello world
+  </div>
+</div>
+`;
+
+exports[`Renders custom image 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    <div
+      className="image"
+    />
+    hello world
+  </p>
+</div>
+`;
+
+exports[`Renders custom inline code 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    <div
+      className="code"
+    />
+  </p>
+</div>
+`;
+
+exports[`Renders custom italics 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    <div
+      className="italics"
+    >
+      hello world
+    </div>
+  </p>
+</div>
+`;
+
+exports[`Renders custom linebreak 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    hello
+    <div
+      className="line-break"
+    />
+    world
+  </p>
+</div>
+`;
+
+exports[`Renders custom link 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    <div
+      className="link"
+    >
+      hello world
+    </div>
+  </p>
+</div>
+`;
+
+exports[`Renders custom list 1`] = `
+<div>
+  <div
+    className="list"
+  >
+    <li
+      className={undefined}
+    >
+      hello world
+    </li>
+  </div>
+</div>
+`;
+
+exports[`Renders custom list item 1`] = `
+<div>
+  <ul
+    className={undefined}
+  >
+    <div
+      className="list-item"
+    >
+      hello world
+    </div>
+  </ul>
+</div>
+`;
+
+exports[`Renders custom paragraph 1`] = `
+<div>
+  <div
+    className="paragraph"
+  >
+    hello world
+  </div>
+</div>
+`;
+
+exports[`Renders custom text 1`] = `
+<div>
+  <p
+    className={undefined}
+  >
+    <div
+      className="text"
+    />
+  </p>
+</div>
+`;
