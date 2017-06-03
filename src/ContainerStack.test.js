@@ -1,5 +1,5 @@
 import React from 'react';
-import ContainerStack from './ContainerStack.js';
+import ContainerStack from './ContainerStack.ts';
 
 const removeAndPeek = (stack, removedType, expectedPeekedContainer) => {
   stack.removeContainer(removedType)

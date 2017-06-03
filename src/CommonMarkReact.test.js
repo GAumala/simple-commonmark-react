@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer'; 
 
-const { renderNodes} = require('./CommonMarkReact.js')
+const { renderNodes } = require('./CommonMarkReact.ts')
 
 const renderToJSON = (markdown, options) => {
   const nodes = renderNodes(markdown, Object.assign({className: 'markdown'}, options))

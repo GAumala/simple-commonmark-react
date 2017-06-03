@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer'; 
 
-import { renderNodes } from './CommonMarkReact.js';
+import { renderNodes } from './CommonMarkReact.ts';
 
 const renderToJSON = (markdown, rendererKey, customRenderer) => {
   const options = { customRenderers: {} }

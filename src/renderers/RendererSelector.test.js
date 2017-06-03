@@ -1,19 +1,19 @@
 const Commonmark = require('commonmark')
 const parser = new Commonmark.Parser()
 
-const RendererSelector = require('./RendererSelector.js').default
-const BoldRenderer = require('./BoldRenderer.js').default
-const CodeRenderer = require('./CodeRenderer.js').default
-const CodeBlockRenderer = require('./CodeBlockRenderer.js').default
-const DocumentRenderer = require('./DocumentRenderer.js').default
-const HeaderRenderer = require('./HeaderRenderer.js').default
-const ImageRenderer = require('./ImageRenderer.js').default
-const ItalicsRenderer = require('./ItalicsRenderer.js').default
-const LineBreakRenderer = require('./LineBreakRenderer.js').default
-const LinkRenderer = require('./LinkRenderer.js').default
-const ListItemRenderer = require('./ListItemRenderer.js').default
-const ListRenderer = require('./ListRenderer.js').default
-const ParagraphRenderer = require('./ParagraphRenderer.js').default
+const RendererSelector = require('./RendererSelector.ts').default
+const BoldRenderer = require('./BoldRenderer.ts').default
+const CodeRenderer = require('./CodeRenderer.ts').default
+const CodeBlockRenderer = require('./CodeBlockRenderer.ts').default
+const DocumentRenderer = require('./DocumentRenderer.ts').default
+const HeaderRenderer = require('./HeaderRenderer.ts').default
+const ImageRenderer = require('./ImageRenderer.ts').default
+const ItalicsRenderer = require('./ItalicsRenderer.ts').default
+const LineBreakRenderer = require('./LineBreakRenderer.ts').default
+const LinkRenderer = require('./LinkRenderer.ts').default
+const ListItemRenderer = require('./ListItemRenderer.ts').default
+const ListRenderer = require('./ListRenderer.ts').default
+const ParagraphRenderer = require('./ParagraphRenderer.ts').default
 
 const getTestingNode = (source) => {
   const ast = parser.parse(source)
