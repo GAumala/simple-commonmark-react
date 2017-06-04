@@ -5,3 +5,4 @@ cache: yarn
 
 script:
   - yarn run ci
+  - cd demo && yarn build
