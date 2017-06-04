@@ -5,7 +5,7 @@ import CommonMarkRenderer from './CommonMarkRenderer'
 import BoldRenderer from './BoldRenderer'
 import CodeRenderer from './CodeRenderer'
 import CodeBlockRenderer from './CodeBlockRenderer'
-import DocumentRenderer from './DocumentRenderer'
+import NullRenderer from './NullRenderer'
 import HeaderRenderer from './HeaderRenderer'
 import ImageRenderer from './ImageRenderer'
 import ItalicsRenderer from './ItalicsRenderer'
@@ -36,7 +36,7 @@ const getRendererByNodeType = (node: Node, options: RenderOptions | undefined):
     case 'code_block':
       return new CodeBlockRenderer(node, options)
     case 'document':
-      return new DocumentRenderer(node, options)
+      return new NullRenderer(node, options)
     case 'emph':
       return new ItalicsRenderer(node, options)
     case 'heading':
@@ -58,7 +58,8 @@ const getRendererByNodeType = (node: Node, options: RenderOptions | undefined):
     case 'text':
       return new TextRenderer(node, options)
     default:
-      throw Error('Unsupported type: ' + node.type)
+      console.log('Unsupported type: ' + node.type)
+      return new NullRenderer(node, options)
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "simple-commonmark-react",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "keywords": [
     "commonmark",
     "markdown",
@@ -22,7 +22,11 @@
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest/preprocessor.js",
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/demo/"
+    ]
   },
   "peerDependencies": {
     "react": "^15.5.4"

@@ -294,6 +294,36 @@ exports[`Renders markdown tags: header, paragraph and code_block with custom cla
 </div>
 `;
 
+exports[`Renders ordered lists starting from arbitrary index with custom class names 1`] = `
+<div>
+  <ol
+    className="markdown"
+    start={4}
+  >
+    <li
+      className="markdown"
+    >
+      item with 
+      <strong
+        className="markdown"
+      >
+        bold
+      </strong>
+    </li>
+    <li
+      className="markdown"
+    >
+      item with 
+      <code
+        className="markdown"
+      >
+        code
+      </code>
+    </li>
+  </ol>
+</div>
+`;
+
 exports[`Renders ordered lists with custom class names 1`] = `
 <div>
   <ol

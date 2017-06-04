@@ -5,7 +5,7 @@ const RendererSelector = require('./RendererSelector.ts').default
 const BoldRenderer = require('./BoldRenderer.ts').default
 const CodeRenderer = require('./CodeRenderer.ts').default
 const CodeBlockRenderer = require('./CodeBlockRenderer.ts').default
-const DocumentRenderer = require('./DocumentRenderer.ts').default
+const NullRenderer = require('./NullRenderer.ts').default
 const HeaderRenderer = require('./HeaderRenderer.ts').default
 const ImageRenderer = require('./ImageRenderer.ts').default
 const ItalicsRenderer = require('./ItalicsRenderer.ts').default
@@ -32,10 +32,10 @@ test('maps paragraph nodes to ParagraphRenderer', () => {
   expect(renderer instanceof ParagraphRenderer).toBe(true)
 })
 
-test('maps document nodes to DocumentRenderer', () => {
+test('maps document nodes to NullRenderer', () => {
   const documentNode = parser.parse('This is a paragraph\n')
   const renderer = RendererSelector(documentNode)
-  expect(renderer instanceof DocumentRenderer).toBe(true)
+  expect(renderer instanceof NullRenderer).toBe(true)
 })
 
 test('maps emph nodes to ItalicsRenderer', () => {
@@ -88,4 +88,10 @@ test('maps list nodes to ListRenderer and item nodes to ListItemRenderer', () =>
   const listItemNode = listNode.firstChild
   const listItemRenderer = RendererSelector(listItemNode)
   expect(listItemRenderer instanceof ListItemRenderer).toBe(true)
+})
+
+test('maps unsupported nodes to NullRenderer', () => {
+  const unsupportedNode = getTestingNode('<html/>')
+  const renderer = RendererSelector(unsupportedNode)
+  expect(renderer instanceof NullRenderer).toBe(true)
 })

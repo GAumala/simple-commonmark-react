@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer'; 
+import renderer from 'react-test-renderer';
 
 const { renderNodes } = require('./CommonMarkReact.ts')
 
@@ -60,6 +60,12 @@ test('Renders bullet lists with custom class names', () => {
 
 test('Renders ordered lists with custom class names', () => {
   const markdown = '1) item with [link](https://eff.org)\n2) item with `code`\n3) item with **bold**\n4) item with *emph*\n'
+  const tree = renderToJSON(markdown)
+  expect(tree).toMatchSnapshot()
+})
+
+test('Renders ordered lists starting from arbitrary index with custom class names', () => {
+  const markdown = '4) item with **bold**\n5) item with `code`\n'
   const tree = renderToJSON(markdown)
   expect(tree).toMatchSnapshot()
 })
