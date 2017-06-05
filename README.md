@@ -1,10 +1,10 @@
 # Simple CommonMark React
 
-[![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react) [![Coverage Status](https://coveralls.io/repos/github/GAumala/simple-commonmark-react/badge.svg?branch=master)](https://coveralls.io/github/GAumala/simple-commonmark-react?branch=master)
+[![npm version](https://badge.fury.io/js/simple-commonmark-react.svg)](https://badge.fury.io/js/simple-commonmark-react) [![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react) [![Coverage Status](https://coveralls.io/repos/github/GAumala/simple-commonmark-react/badge.svg?branch=master)](https://coveralls.io/github/GAumala/simple-commonmark-react?branch=master)
 
-This module renders Markdown as React components using [Markdown.js](https://www.npmjs.com/package/commonmark) as parser.
+This module renders Markdown as React components using [Markdown.js](https://www.npmjs.com/package/commonmark) as parser. You can find a demo app [here](ttps://gaumala.github.io/simple-commonmark-react/).
 
-This is still a work in progress and very limited. Currently the only supported types are:
+This is still a work in progress, the whole markdown standard is not yet supported. Currently the only supported types are:
 
 - code
 - code_block
@@ -18,7 +18,7 @@ This is still a work in progress and very limited. Currently the only supported 
 - softbreak
 - strong
 
-If you need a more production ready markdown module, try [commonmark-react-renderer](https://github.com/rexxars/commonmark-react-renderer).
+PR's are welcome. If you need a more production ready markdown module, try [commonmark-react-renderer](https://github.com/rexxars/commonmark-react-renderer).
 I started this project because I needed an easier way to style the markdown components.
 
 ## Install
