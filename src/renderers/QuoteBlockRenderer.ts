@@ -3,13 +3,12 @@ import { createElement, ReactElement } from 'react';
 import RenderOptions from '../RenderOptions';
 import CommonMarkRenderer from './CommonMarkRenderer';
 
-export default class LineBreakRenderer extends CommonMarkRenderer {
+export default class QuoteBlockRenderer extends CommonMarkRenderer {
   constructor(node: Node, options: RenderOptions | undefined) {
     super(node, options);
   }
 
-  protected renderNodeWithProps(props: object): ReactElement<any> | string {
-    if (this.options.allowSoftBreaks) return createElement('br');
-    else return '\n';
+  protected renderNodeWithProps(props: object): ReactElement<any> {
+    return createElement('blockquote', props, []);
   }
 }

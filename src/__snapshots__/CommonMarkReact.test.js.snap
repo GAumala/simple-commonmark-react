@@ -196,6 +196,32 @@ exports[`Renders loose lists with custom class names 1`] = `
 </div>
 `;
 
+exports[`Renders markdown block quote with bold and italics 1`] = `
+<div>
+  <blockquote
+    className="markdown"
+  >
+    <p
+      className="markdown"
+    >
+      This is some quote with 
+      <strong
+        className="markdown"
+      >
+        bold
+      </strong>
+       and 
+      <em
+        className="markdown"
+      >
+        italics
+      </em>
+      .
+    </p>
+  </blockquote>
+</div>
+`;
+
 exports[`Renders markdown images with custom class names 1`] = `
 <div>
   <p

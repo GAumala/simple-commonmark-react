@@ -1,26 +1,23 @@
-import { ReactElement, createElement } from 'react'
-import { Node } from 'commonmark'
-import CommonMarkRenderer from './CommonMarkRenderer'
-import RenderOptions from '../RenderOptions'
+import { Node } from 'commonmark';
+import { createElement, ReactElement } from 'react';
+import RenderOptions from '../RenderOptions';
+import CommonMarkRenderer from './CommonMarkRenderer';
 
 export default class ListRenderer extends CommonMarkRenderer {
-
-  constructor (node: Node, options: RenderOptions | undefined) {
-    super(node, options)
+  constructor(node: Node, options: RenderOptions | undefined) {
+    super(node, options);
   }
 
-  getDefaultProps(key: string): object {
-    const defaultProps: any = super.getDefaultProps(key)
-    const listStart = this.node.listStart
-    if (listStart != null && listStart !== 1)
-      defaultProps.start = listStart
-    return defaultProps
-
+  protected getDefaultProps(key: string): object {
+    const defaultProps: any = super.getDefaultProps(key);
+    const listStart = this.node.listStart;
+    if (listStart != null && listStart !== 1) defaultProps.start = listStart;
+    return defaultProps;
   }
 
-  renderNodeWithProps(props: object): ReactElement<any> {
-    const isBullet = this.node.listType.toLowerCase() === 'bullet'
-    const listTag = isBullet ? 'ul' : 'ol'
-    return createElement(listTag, props, [])
+  protected renderNodeWithProps(props: object): ReactElement<any> {
+    const isBullet = this.node.listType.toLowerCase() === 'bullet';
+    const listTag = isBullet ? 'ul' : 'ol';
+    return createElement(listTag, props, []);
   }
 }

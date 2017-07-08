@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Renders custom block quote 1`] = `
+<div>
+  <div
+    className="block_quote"
+  >
+    <p
+      className={undefined}
+    >
+      hello world
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Renders custom bold 1`] = `
 <div>
   <p

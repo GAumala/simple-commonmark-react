@@ -1,23 +1,84 @@
-import CommonMarkRenderer from './CommonMarkRenderer'
-import RenderOptions from '../RenderOptions'
-import { Node } from 'commonmark'
-
+import { Node } from 'commonmark';
+import RenderOptions from '../RenderOptions';
+import CommonMarkRenderer from './CommonMarkRenderer';
 
 export default class CustomRendererDict {
-  code_block: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  code: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  emph: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  heading: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  image: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  item: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  link: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  list: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  paragraph: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  softbreak: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  strong: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-  text: (new (node: Node, options: RenderOptions | undefined) => CommonMarkRenderer) | undefined
-
-  constructor() {
-  }
-
+  public block_quote:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public code_block:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public code:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public emph:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public heading:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public image:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public item:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public link:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public list:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public paragraph:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public softbreak:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public strong:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
+  public text:
+    | (new (
+        node: Node,
+        options: RenderOptions | undefined,
+      ) => CommonMarkRenderer)
+    | undefined;
 }

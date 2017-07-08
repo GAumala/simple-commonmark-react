@@ -1,11 +1,12 @@
 # Simple CommonMark React
 
-[![npm version](https://badge.fury.io/js/simple-commonmark-react.svg)](https://badge.fury.io/js/simple-commonmark-react) [![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react) [![Coverage Status](https://coveralls.io/repos/github/GAumala/simple-commonmark-react/badge.svg?branch=master)](https://coveralls.io/github/GAumala/simple-commonmark-react?branch=master)
+[![npm version](https://badge.fury.io/js/simple-commonmark-react.svg)](https://badge.fury.io/js/simple-commonmark-react) [![Build Status](https://travis-ci.org/GAumala/simple-commonmark-react.svg?branch=master)](https://travis-ci.org/GAumala/simple-commonmark-react) [![Coverage Status](https://coveralls.io/repos/github/GAumala/simple-commonmark-react/badge.svg?branch=master)](https://coveralls.io/github/GAumala/simple-commonmark-react?branch=master) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
-This module renders Markdown as React components using [Markdown.js](https://www.npmjs.com/package/commonmark) as parser. You can find a demo app [here](ttps://gaumala.github.io/simple-commonmark-react/).
+This module renders Markdown as React components using [Commonmark](https://www.npmjs.com/package/commonmark) as parser. You can find a demo app [here](ttps://gaumala.github.io/simple-commonmark-react/).
 
-This is still a work in progress, the whole markdown standard is not yet supported. Currently the only supported types are:
+The whole markdown standard is not yet supported. Currently the only supported types are:
 
+- block-quote
 - code
 - code_block
 - emph
@@ -78,6 +79,7 @@ link | [LinkRenderer](https://github.com/GAumala/simple-commonmark-react/blob/ma
 image | [ImageRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ImageRenderer.ts) | `![link](/to/some/pic.png)` | `<img src="/to/some/pic.png">image</img>`
 code | [CodeRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/CodeRenderer.ts) | ``inline code`` | `<code>inline code</code>`
 code block | [CodeBlockRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/CodeBlockRenderer.ts) | `\n```\nblock code\n```\n` | `<pre><code>block code</code></pre>`
+block quote | [QuoteBlockRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/QuoteBlockRenderer.ts) | `> this is a quote` | `<blockquote><p>this is a quote</p></blockquote>`
 paragraph | [ParagraphRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ParagraphRenderer.ts) | `a paragraph` | `<p>a paragraph</p>`
 list (bullet) | [ListRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListRenderer.ts) & [ListItemRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListItemRenderer.ts) | `- item 1\n- item 2` | `<ul><li>item 1</li><li>item 2</li></ul>`
 list (ordered) | [ListRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListRenderer.ts) & [ListItemRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListItemRenderer.ts) |`1. item 1\n2. item 2` | `<ol><li>item 1</li><li>item 2</li></ol>`
@@ -197,4 +199,4 @@ class MarkdownComponent extends React.Component {
 }
 ```
 
-As you can see, we use 'link' as key to insert `ReactRouterLinkRenderer` because that's the string that CommonMark uses to identify that particular Markdown element. That's how the library knows that you are overriding `link` and not `image` or `paragraph`. The keys you can use for overriding are: `text`, `softbreak`, `emph`, `strong`, `link`, `image`, `code`, `document`, `paragraph`, `item`, `list`, `heading`, `code_block`. If you use the wrong key, your renderer will not be used.
+As you can see, we use 'link' as key to insert `ReactRouterLinkRenderer` because that's the string that CommonMark uses to identify that particular Markdown element. That's how the library knows that you are overriding `link` and not `image` or `paragraph`. The keys you can use for overriding are: `text`, `softbreak`, `emph`, `strong`, `link`, `image`, `code`, `document`, `paragraph`, `item`, `list`, `heading`, `code_block`, `block_quote`. If you use the wrong key, your renderer will not be used.

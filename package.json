@@ -1,15 +1,18 @@
 {
   "name": "simple-commonmark-react",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "keywords": [
     "commonmark",
     "markdown",
     "react",
     "renderer"
   ],
+  "files": [
+    "./dist/"
+  ],
   "repository": "GAumala/simple-commonmark-react",
   "description": "React renderer for Commonmark (rationalized Markdown) written in TypeScript",
-  "main": "src/CommonMarkReact.js",
+  "main": "dist/CommonMarkReact.js",
   "author": "Gabriel Aumala",
   "license": "MIT",
   "jest": {
@@ -25,6 +28,7 @@
     },
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
+      "<rootDir>/dist/",
       "<rootDir>/demo/"
     ]
   },
@@ -37,18 +41,26 @@
     "babel-jest": "^20.0.3",
     "babel-preset-es2015": "^6.24.1",
     "coveralls": "^2.13.1",
+    "eslint": "^4.1.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
     "jest": "^20.0.4",
+    "prettier": "^1.5.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "ts-jest": "^20.0.5",
+    "tslint": "^5.5.0",
+    "tslint-eslint-rules": "^4.1.1",
     "typescript": "^2.3.3"
   },
   "scripts": {
     "test": "jest --coverage",
-    "build": "tsc -d ./src/CommonMarkReact.ts",
+    "eslint": "eslint src/*.test.js src/renderers/*.test.js",
+    "tslint": "gulp tslint",
+    "build": "tsc -d --outDir ./dist/ ./src/CommonMarkReact.ts",
     "dev": "yarn run build && yarn test",
-    "ci": "yarn run build -- --target es2015 --moduleResolution node && yarn test && cat ./coverage/lcov.info | coveralls",
+    "ci": "yarn build && yarn eslint && yarn tslint && yarn test && cat ./coverage/lcov.info | coveralls",
     "release": "yarn run tsc && publish"
   },
   "dependencies": {
