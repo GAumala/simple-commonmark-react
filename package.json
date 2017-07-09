@@ -43,7 +43,8 @@
     "coveralls": "^2.13.1",
     "eslint": "^4.1.1",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
+    "gulp-util": "^3.0.8",
+    "is-ci": "^1.0.10",
     "jest": "^20.0.4",
     "prettier": "^1.5.2",
     "react": "^15.5.4",
@@ -60,7 +61,8 @@
     "tslint": "gulp tslint",
     "build": "tsc -d --outDir ./dist/ ./src/CommonMarkReact.ts",
     "dev": "yarn run build && yarn test",
-    "ci": "yarn build && yarn eslint && yarn tslint && yarn test && cat ./coverage/lcov.info | coveralls",
+    "prettier": "yarn run gulp prettier prettier-ts",
+    "ci": "yarn build && yarn prettier && yarn eslint && yarn tslint && yarn test && cat ./coverage/lcov.info | coveralls",
     "release": "yarn run tsc && publish"
   },
   "dependencies": {
