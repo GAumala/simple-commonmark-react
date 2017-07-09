@@ -43,6 +43,7 @@
     "coveralls": "^2.13.1",
     "eslint": "^4.1.1",
     "gulp": "^3.9.1",
+    "gulp-prettier-plugin": "^1.0.0",
     "gulp-util": "^3.0.8",
     "is-ci": "^1.0.10",
     "jest": "^20.0.4",

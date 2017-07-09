@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const isCI = require('is-ci');
 const { tslintTask } = require('./tasks/tslint.js');
-const prettierTask = require('./tasks/prettier.js');
+const prettierTask = require('gulp-prettier-plugin');
 
 gulp.task('tslint', () =>
   gulp.src(['./src/**/*.ts', '!./src/**/*.d.ts']).pipe(tslintTask())
@@ -17,7 +17,7 @@ gulp.task('prettier', () =>
           singleQuote: true,
         },
         {
-          filter: true,
+          filter: !isCI,
           validate: isCI,
         }
       )
@@ -36,7 +36,7 @@ gulp.task('prettier-ts', () =>
           parser: 'typescript',
         },
         {
-          filter: true,
+          filter: !isCI,
           validate: isCI,
         }
       )
