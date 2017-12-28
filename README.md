@@ -4,23 +4,7 @@
 
 This module renders Markdown as React components using [Commonmark](https://www.npmjs.com/package/commonmark) as parser. You can find a demo app [here](ttps://gaumala.github.io/simple-commonmark-react/).
 
-The whole markdown standard is not yet supported. Currently the only supported types are:
-
-- block-quote
-- code
-- code_block
-- emph
-- header
-- image
-- item
-- link
-- list
-- paragraph
-- softbreak
-- strong
-
-PR's are welcome. If you need a more production ready markdown module, try [commonmark-react-renderer](https://github.com/rexxars/commonmark-react-renderer).
-I started this project because I needed an easier way to style the markdown components.
+All nodes emitted by `commonmark` are supported except for inline html. I started this project because I needed an easier way to style the markdown components.
 
 ## Install
 
@@ -84,6 +68,7 @@ paragraph | [ParagraphRenderer](https://github.com/GAumala/simple-commonmark-rea
 list (bullet) | [ListRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListRenderer.ts) & [ListItemRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListItemRenderer.ts) | `- item 1\n- item 2` | `<ul><li>item 1</li><li>item 2</li></ul>`
 list (ordered) | [ListRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListRenderer.ts) & [ListItemRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/ListItemRenderer.ts) |`1. item 1\n2. item 2` | `<ol><li>item 1</li><li>item 2</li></ol>`
 heading | [HeaderRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/HeaderRenderer.ts) | `# title` | `<h1>title</h1>`
+thematic_break | [BreakRenderer](https://github.com/GAumala/simple-commonmark-react/blob/master/src/renderers/BreakRenderer.ts) | `***` | `<hr/>`
 
 Once you have an idea how each is rendered, you can style your components with CSS.
 
