@@ -104,9 +104,3 @@ test('maps list nodes to ListRenderer and item nodes to ListItemRenderer', () =>
   const listItemRenderer = RendererSelector(listItemNode);
   expect(listItemRenderer instanceof ListItemRenderer).toBe(true);
 });
-
-test('maps unsupported nodes to NullRenderer', () => {
-  const unsupportedNode = getTestingNode('<html/>');
-  const renderer = RendererSelector(unsupportedNode);
-  expect(renderer instanceof NullRenderer).toBe(true);
-});

@@ -7,6 +7,7 @@ import CodeBlockRenderer from './CodeBlockRenderer';
 import CodeRenderer from './CodeRenderer';
 import CommonMarkRenderer from './CommonMarkRenderer';
 import HeaderRenderer from './HeaderRenderer';
+import HtmlBlockRenderer from './HtmlBlockRenderer';
 import ImageRenderer from './ImageRenderer';
 import ItalicsRenderer from './ItalicsRenderer';
 import LineBreakRenderer from './LineBreakRenderer';
@@ -49,6 +50,8 @@ const getRendererByNodeType = (
       return new ItalicsRenderer(node, options);
     case 'heading':
       return new HeaderRenderer(node, options);
+    case 'html_block':
+      return new HtmlBlockRenderer(node, options);
     case 'image':
       return new ImageRenderer(node, options);
     case 'item':

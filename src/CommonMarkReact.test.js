@@ -45,15 +45,12 @@ test('Renders code_block without language name with custom class names', () => {
   expect(tree).toMatchSnapshot();
 });
 
-test.only(
-  'Renders sections separated by thematic breaks with custom class names',
-  () => {
-    const markdown =
-      '# Section 1\n\nSome text.\n\n***\n\n# Section 2\n\nSome more text.\n';
-    const tree = renderToJSON(markdown);
-    expect(tree).toMatchSnapshot();
-  }
-);
+test('Renders sections separated by thematic breaks with custom class names', () => {
+  const markdown =
+    '# Section 1\n\nSome text.\n\n***\n\n# Section 2\n\nSome more text.\n';
+  const tree = renderToJSON(markdown);
+  expect(tree).toMatchSnapshot();
+});
 
 test('Renders markdown link with custom class names', () => {
   const markdown =
@@ -109,5 +106,12 @@ test('Renders correctly when customProps is undefined', () => {
   const rootElement = React.createElement('div', null, nodes);
   const component = renderer.create(rootElement);
   const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test('Renders header and html block', () => {
+  const markdown =
+    '# Html Block\n\n<p style="text-align:right">Aligned to right.</p>\n';
+  const tree = renderToJSON(markdown);
   expect(tree).toMatchSnapshot();
 });
