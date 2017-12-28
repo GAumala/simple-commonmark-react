@@ -7,8 +7,8 @@ import './App.css';
 
 const defaultText = '[![npm version](https://badge.fury.io/js/simple-commonmark-react.svg)](https://badge.fury.io/js/simple-commonmark-react)' +
   '\n\n# Hello World!\n\n' +
-  'Write something *here*, and it will be rendered as [markdown](http://www.markdowntutorial.com/) on the right.\n\n' +
-  '**Try it out!**\nIf something is broken, please [submit an issue](https://github.com/GAumala/simple-commonmark-react/issues/new).\n\n'
+  'Write something *here* (left), and it will be rendered as [markdown](http://www.markdowntutorial.com/) on the right.\n\n' +
+  '**Try it out!**\n\n***\n\nIf something is broken, please [submit an issue](https://github.com/GAumala/simple-commonmark-react/issues/new).\n\n'
 
 class AppHeader extends Component {
   render() {
