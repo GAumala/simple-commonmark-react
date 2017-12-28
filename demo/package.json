@@ -7,7 +7,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
-    "simple-commonmark-react": "0.7.1"
+    "simple-commonmark-react": "0.8.1"
   },
   "devDependencies": {
     "gh-pages": "^1.0.0",
