@@ -162,3 +162,11 @@ exports[`Renders custom text 1`] = `
   </p>
 </div>
 `;
+
+exports[`Renders custom thematic break 1`] = `
+<div>
+  <div
+    className="thematic_break"
+  />
+</div>
+`;

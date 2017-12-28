@@ -3,6 +3,7 @@ const parser = new Commonmark.Parser();
 
 const RendererSelector = require('./RendererSelector.ts').default;
 const BlockQuoteRenderer = require('./QuoteBlockRenderer.ts').default;
+const BreakRenderer = require('./BreakRenderer.ts').default;
 const BoldRenderer = require('./BoldRenderer.ts').default;
 const CodeRenderer = require('./CodeRenderer.ts').default;
 const CodeBlockRenderer = require('./CodeBlockRenderer.ts').default;
@@ -67,6 +68,12 @@ test('maps linebreak nodes to LineBreakRenderer', () => {
   const lineBreakNode = getTestingNode('this has\nline break').lastChild.prev;
   const renderer = RendererSelector(lineBreakNode);
   expect(renderer instanceof LineBreakRenderer).toBe(true);
+});
+
+test('maps thematic_break nodes to BreakRenderer', () => {
+  const thematicBreakNode = getTestingNode('***');
+  const renderer = RendererSelector(thematicBreakNode);
+  expect(renderer instanceof BreakRenderer).toBe(true);
 });
 
 test('maps code_block nodes to CodeBlockRenderer', () => {

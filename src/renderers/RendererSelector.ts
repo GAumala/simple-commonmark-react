@@ -2,6 +2,7 @@ import { Node } from 'commonmark';
 
 import RenderOptions from '../RenderOptions';
 import BoldRenderer from './BoldRenderer';
+import BreakRenderer from './BreakRenderer';
 import CodeBlockRenderer from './CodeBlockRenderer';
 import CodeRenderer from './CodeRenderer';
 import CommonMarkRenderer from './CommonMarkRenderer';
@@ -64,6 +65,8 @@ const getRendererByNodeType = (
       return new BoldRenderer(node, options);
     case 'text':
       return new TextRenderer(node, options);
+    case 'thematic_break':
+      return new BreakRenderer(node, options);
     default:
       console.error('Unsupported type: ' + node.type);
       return new NullRenderer(node, options);

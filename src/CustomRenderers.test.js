@@ -112,3 +112,10 @@ test('Renders custom text', () => {
   const tree = renderToJSON(markdown, 'text', customRenderer);
   expect(tree).toMatchSnapshot();
 });
+
+test('Renders custom thematic break', () => {
+  const customRenderer = GenericRenderer('thematic_break');
+  const markdown = '***';
+  const tree = renderToJSON(markdown, 'thematic_break', customRenderer);
+  expect(tree).toMatchSnapshot();
+});

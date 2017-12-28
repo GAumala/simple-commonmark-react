@@ -45,6 +45,16 @@ test('Renders code_block without language name with custom class names', () => {
   expect(tree).toMatchSnapshot();
 });
 
+test.only(
+  'Renders sections separated by thematic breaks with custom class names',
+  () => {
+    const markdown =
+      '# Section 1\n\nSome text.\n\n***\n\n# Section 2\n\nSome more text.\n';
+    const tree = renderToJSON(markdown);
+    expect(tree).toMatchSnapshot();
+  }
+);
+
 test('Renders markdown link with custom class names', () => {
   const markdown =
     'Check out this [link](https://fsf.org) and [this one](/local/path "some server url") with title';

@@ -139,7 +139,9 @@ exports[`Renders line breaks as <br/> if allowSoftBreaks option is active 1`] = 
   >
     Hello World
     !
-    <br />
+    <br
+      className="markdown"
+    />
     <em
       className="markdown"
     >
@@ -397,5 +399,33 @@ exports[`Renders ordered lists with custom class names 1`] = `
       </em>
     </li>
   </ol>
+</div>
+`;
+
+exports[`Renders sections separated by thematic breaks with custom class names 1`] = `
+<div>
+  <h1
+    className="markdown"
+  >
+    Section 1
+  </h1>
+  <p
+    className="markdown"
+  >
+    Some text.
+  </p>
+  <hr
+    className="markdown"
+  />
+  <h1
+    className="markdown"
+  >
+    Section 2
+  </h1>
+  <p
+    className="markdown"
+  >
+    Some more text.
+  </p>
 </div>
 `;
