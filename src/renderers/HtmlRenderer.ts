@@ -9,7 +9,7 @@ export default class HtmlBlockRenderer extends CommonMarkRenderer {
   }
 
   protected getDefaultProps(key: string): object {
-    return { dangerouslySetInnerHtml: this.node.text, key };
+    return { dangerouslySetInnerHtml: this.node.literal, key };
   }
   protected renderNodeWithProps(props: object): ReactElement<any> | string {
     return createElement('div', props);
