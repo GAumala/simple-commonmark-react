@@ -2,10 +2,10 @@ import { Node } from 'commonmark';
 import RenderOptions from '../RenderOptions';
 import CommonMarkRenderer from './CommonMarkRenderer';
 
-export type RendererFactory = (new (
+export type RendererFactory = new (
   node: Node,
   options: RenderOptions | undefined,
-) => CommonMarkRenderer);
+) => CommonMarkRenderer;
 
 export default class CustomRendererDict {
   public block_quote?: RendererFactory;

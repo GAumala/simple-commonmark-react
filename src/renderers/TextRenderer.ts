@@ -9,6 +9,6 @@ export default class TextRenderer extends CommonMarkRenderer {
   }
 
   protected renderNodeWithProps(props: object): string {
-    return this.node.literal || "";
+    return this.node.literal || '';
   }
 }
