@@ -253,6 +253,7 @@ exports[`Renders markdown images with custom class names 1`] = `
       className="markdown"
       src="https://somewebsite.org/pic.png"
     />
+    
      it is inline
   </p>
   <p
@@ -269,6 +270,7 @@ exports[`Renders markdown images with custom class names 1`] = `
       src="/public/photo.png"
       title="my pic"
     />
+    
   </p>
 </div>
 `;
