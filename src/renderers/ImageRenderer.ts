@@ -31,7 +31,7 @@ export default class ImageRenderer extends CommonMarkRenderer {
     if (textNode) {
       const altText = textNode.literal;
       this.clearAltTextNode(textNode);
-      return altText;
+      return altText || undefined;
     }
   }
 }

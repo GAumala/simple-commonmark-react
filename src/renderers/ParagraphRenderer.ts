@@ -18,6 +18,6 @@ export default class ParagraphRenderer extends CommonMarkRenderer {
 
   private isTightListChild(): boolean {
     const parent = this.node.parent;
-    return parent.type === 'item' && parent.listTight;
+    return (parent && parent.type === 'item' && parent.listTight) || false;
   }
 }
